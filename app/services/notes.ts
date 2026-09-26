@@ -6,17 +6,11 @@ export const getNotes = async () => {
   return db.query.notes.findMany()
 }
 
-export const getNoteById = (id: number) => {
-  return notes.find(n => n.id === id)
+// Stubs to keep build working until implemented with database
+export const getNoteById = (_id: number) => {
+  return undefined as { id: number; content: string; important: boolean } | undefined
 }
 
-export const addNote = (content: string, important: boolean) => {
-  notes.push({ id: nextId++, content, important })
-}
+export const addNote = (_content: string, _important: boolean) => {}
 
-export const toggleImportance = (id: number) =>{
-  const note = getNoteById(id)
-  if (note) {
-    note.important = !note.important
-  }
-}
+export const toggleImportance = (_id: number) => {}
