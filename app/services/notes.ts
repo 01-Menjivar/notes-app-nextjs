@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm"
+import { eq, sql } from "drizzle-orm"
 import { db } from "../../db"
 import { notes } from "../../db/schema"
 
@@ -18,8 +18,14 @@ export const getNoteById = async (id: number) => {
 }
 
 export const addNote = async (content: string, important: boolean) => {
-  // @ts-expect-error part6 has not yet associated new notes with a user (addressed in part7)
-  await db.insert(notes).values({ content, important })
+  const user = await db.query.users.findFirst({
+    orderBy: sql`RANDOM()`,
+  })
+
+  if(!user) {
+    throw new Error("No user found to associate with the note")
+  }
+  await db.insert(notes).values({ content, important, userId: user.id })
 }
 
 export const toggleImportance = async (id: number) => {
