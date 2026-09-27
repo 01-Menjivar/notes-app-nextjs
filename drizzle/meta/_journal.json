@@ -8,6 +8,20 @@
       "when": 1790447780086,
       "tag": "0000_light_snowbird",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790461189322,
+      "tag": "0001_mute_kid_colt",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790461513702,
+      "tag": "0002_bumpy_puff_adder",
+      "breakpoints": true
     }
   ]
 }

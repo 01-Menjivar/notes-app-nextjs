@@ -8,9 +8,9 @@ export const getNotes = async (importantOnly: boolean) => {
       where: eq(notes.important, true),
     })
   }
-  
   return db.query.notes.findMany()
 }
+
 export const getNoteById = async (id: number) => {
   return db.query.notes.findFirst({
     where: eq(notes.id, id),
@@ -18,6 +18,7 @@ export const getNoteById = async (id: number) => {
 }
 
 export const addNote = async (content: string, important: boolean) => {
+  // @ts-expect-error part6 has not yet associated new notes with a user (addressed in part7)
   await db.insert(notes).values({ content, important })
 }
 
