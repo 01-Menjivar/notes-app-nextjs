@@ -1,6 +1,7 @@
 import { eq, sql } from "drizzle-orm"
-import { db } from "../../db"
-import { notes } from "../../db/schema"
+import { db } from "@/db"
+import { notes } from "@/db/schema"
+import { getCurrentUser } from "@/app/services/session"
 
 export const getNotes = async (importantOnly: boolean) => {
   if (importantOnly) {
@@ -18,9 +19,7 @@ export const getNoteById = async (id: number) => {
 }
 
 export const addNote = async (content: string, important: boolean) => {
-  const user = await db.query.users.findFirst({
-    orderBy: sql`RANDOM()`,
-  })
+  const user = await getCurrentUser()
 
   if(!user) {
     throw new Error("No user found to associate with the note")

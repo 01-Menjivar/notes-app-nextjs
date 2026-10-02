@@ -1,6 +1,6 @@
 {
-  "id": "fe3e9757-bc47-4da2-b5c1-bb8676a0f44d",
-  "prevId": "0bfe6e77-e0dd-43bc-9360-f679e09f5abb",
+  "id": "430ae15e-1b95-439a-9e6f-c089c39600a9",
+  "prevId": "61062503-8ce2-4393-ac1f-8061b0e4831d",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -31,7 +31,7 @@
           "name": "user_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
@@ -77,6 +77,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
         }
       },
       "indexes": {},
